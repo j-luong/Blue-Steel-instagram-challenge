@@ -26,7 +26,7 @@ feature 'pictures' do
       visit '/pictures'
       click_link 'Add a picture'
       fill_in 'Caption', with: 'KFC'
-      click_button 'Create picture'
+      click_button 'Create Picture'
       expect(page).to have_content 'KFC'
       expect(current_path).to eq '/pictures'
     end
