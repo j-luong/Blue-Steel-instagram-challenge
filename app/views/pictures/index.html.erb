@@ -1,0 +1,12 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <%= image_tag picture.image.url(:thumb) %>
+    <br>
+    <%= picture.caption %>
+  <% end %>
+<% else %>
+  <br>
+  No pictures yet
+<% end %>
+<br>
+<a href='/pictures/new'>Add a picture</a>
