@@ -6,9 +6,13 @@ class CommentsController < ApplicationController
 
   def create
     @picture = Picture.find(params[:picture_id])
-    @picture.comments.create(comment_params)
+    @comment = @picture.comments.new(comment_params)
 
-    redirect_to "/pictures/#{@picture.id}"
+    if @comment.save
+      redirect_to "/pictures/#{@picture.id}"
+    else
+      render "new"
+    end
   end
 
   private

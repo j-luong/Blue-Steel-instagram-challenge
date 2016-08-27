@@ -35,9 +35,9 @@ feature 'pictures' do
       it 'does not let you submit a name that is too short' do
         visit '/pictures'
         click_link 'Add a picture'
-        fill_in 'Caption', with: 'kf'
+        fill_in 'Caption', with: 'bs'
         click_button 'Create Picture'
-        expect(page).not_to have_css 'h2', text: 'kf'
+        expect(page).not_to have_css 'h2', text: 'bs'
         expect(page).to have_content 'error'
       end
     end
