@@ -30,6 +30,17 @@ feature 'pictures' do
       expect(page).to have_content 'KFC'
       expect(current_path).to eq '/pictures'
     end
+
+    context 'an invalid picture' do
+      it 'does not let you submit a name that is too short' do
+        visit '/pictures'
+        click_link 'Add a picture'
+        fill_in 'Caption', with: 'kf'
+        click_button 'Create Picture'
+        expect(page).not_to have_css 'h2', text: 'kf'
+        expect(page).to have_content 'error'
+      end
+    end
   end
 
   context 'viewing pictures' do
