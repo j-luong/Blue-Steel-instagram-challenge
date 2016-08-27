@@ -11,12 +11,12 @@ feature 'pictures' do
 
   context 'pictures have been added' do
     before do
-      Picture.create(caption: 'KFC')
+      Picture.create(caption: 'FERRARI')
     end
 
     scenario 'display restaurants' do
       visit '/pictures'
-      expect(page).to have_content('KFC')
+      expect(page).to have_content('FERRARI')
       expect(page).not_to have_content('No restaurants yet')
     end
   end
@@ -25,9 +25,9 @@ feature 'pictures' do
     scenario 'prompts user to fill out a form, then displays the new picture' do
       visit '/pictures'
       click_link 'Add a picture'
-      fill_in 'Caption', with: 'KFC'
+      fill_in 'Caption', with: 'FERRARI'
       click_button 'Create Picture'
-      expect(page).to have_content 'KFC'
+      expect(page).to have_content 'FERRARI'
       expect(current_path).to eq '/pictures'
     end
 
@@ -44,36 +44,36 @@ feature 'pictures' do
   end
 
   context 'viewing pictures' do
-    let!(:kfc){ Picture.create(caption:'KFC') }
+    let!(:kfc){ Picture.create(caption:'FERRARI') }
 
     scenario 'lets a user view a picture' do
       visit '/pictures'
-      click_link 'KFC'
-      expect(page).to have_content 'KFC'
+      click_link 'FERRARI'
+      expect(page).to have_content 'FERRARI'
       expect(current_path).to eq "/pictures/#{kfc.id}"
     end
   end
 
   context 'editing pictures' do
-    before { Picture.create caption: 'KFC' }
+    before { Picture.create caption: 'FERRARI' }
 
     scenario 'let a user edit a picture' do
       visit '/pictures'
       click_link 'Edit picture'
-      fill_in 'Caption', with: 'Kentucky Fried Chicken'
+      fill_in 'Caption', with: 'LE TIGRE'
       click_button 'Update Picture'
-      expect(page).to have_content 'Kentucky Fried Chicken'
+      expect(page).to have_content 'LE TIGRE'
       expect(current_path).to eq '/pictures'
     end
   end
 
   context 'deleting pictures' do
-    before { Picture.create caption: 'KFC' }
+    before { Picture.create caption: 'FERRARI' }
 
     scenario 'removes a picture when a user clicks a delete link' do
       visit '/pictures'
       click_link 'Delete picture'
-      expect(page).not_to have_content 'KFC'
+      expect(page).not_to have_content 'FERRARI'
       expect(page).to have_content 'Picture deleted successfully'
     end
   end
