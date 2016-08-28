@@ -1,6 +1,17 @@
 <%= image_tag @picture.image.url(:original)%>
 <p><%= @picture.caption %></p>
 
+<span class="likes_count">
+  <%= @picture.likes.count %>
+</span>
+
+<%= 'like'.pluralize(@picture.likes.count) %>
+
+<br>
+<% if user_signed_in? %>
+  <%= link_to "Like", picture_likes_path(@picture), class: 'likes-link' %>
+<% end %>
+
 <h2><%= "Comments" %></h2>
 <% @picture.comments.each do |comment| %>
   <%= comment.message %>
