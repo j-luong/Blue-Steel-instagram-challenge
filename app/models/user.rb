@@ -25,4 +25,12 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def has_commented?(picture)
+    commented_pictures.include? picture
+  end
+
+  def created_picture?(picture)
+    pictures.include? picture
+  end
 end

@@ -8,7 +8,8 @@ describe Picture, type: :model do
   end
 
   it "is not valid unless it has a unique name" do
-    Picture.create(caption: "Magnum")
+    user = User.create(email: "test@test.com", password: "password")
+    Picture.create(caption: "Magnum", user_id: user.id)
     restaurant = Picture.new(caption: "Magnum")
     expect(restaurant).to have(1).error_on(:caption)
   end

@@ -3,7 +3,10 @@ require 'rails_helper'
 feature 'commenting' do
   context 'adding comments' do
     it 'allows users to leave a comment using a form' do
-      pic = Picture.create caption: 'Blue Steel'
+      user = User.create(email: "test@test.com", password: "password")
+      sign_in(email: user.email, password: user.password)
+      pic = Picture.create(caption: "Blue Steel", user_id: user.id)
+      
       visit "/pictures/#{pic.id}"
       click_link 'Comment'
       fill_in "Message", with: "BLUE STEEL!"
@@ -16,7 +19,10 @@ feature 'commenting' do
 
   context 'message is too short' do
     it 'does not let you submit a message that is too short' do
-      pic = Picture.create caption: 'Blue Steel'
+      user = User.create(email: "test@test.com", password: "password")
+      sign_in(email: user.email, password: user.password)
+      pic = Picture.create(caption: "Blue Steel", user_id: user.id)
+
       visit "/pictures/#{pic.id}"
       click_link 'Comment'
       click_button 'Leave Comment'

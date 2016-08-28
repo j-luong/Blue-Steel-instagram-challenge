@@ -22,20 +22,31 @@ class CommentsController < ApplicationController
 
   def update
     @picture = Picture.find(params[:id])
-
     @comment = Comment.find(params[:picture_id])
-    @comment.update(comment_params)
 
-    redirect_to "/pictures/#{@picture.id}"
+    if current_user.has_commented?(@picture)
+      @comment.update(comment_params)
+
+      redirect_to "/pictures/#{@picture.id}"
+    else
+      redirect_to "/pictures/#{@picture.id}",
+      alert: "You do not make this comment!"
+    end
   end
 
   def destroy
     @picture = Picture.find(params[:id])
     @comment = Comment.find(params[:picture_id])
-    @comment.destroy
 
-    flash[:notice] = "Comment deleted successfully"
-    redirect_to "/pictures/#{@picture.id}"
+    if current_user.has_commented?(@picture)
+      @comment.destroy
+
+      flash[:notice] = "Comment deleted successfully"
+      redirect_to "/pictures/#{@picture.id}"
+    else
+      redirect_to "/pictures/#{@picture.id}",
+      alert: "You do not make this comment!"
+    end
   end
 
   private
