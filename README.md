@@ -1,23 +1,39 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+About
+---
+This challenge was to build an Instagram clone using Ruby on Rails.
 
-Task
------
+Features
+---
+Users can:
+- Sign up with email/Facebook
+- Upload pictures
+- Add captions to pictures
+- Comment on pictures
+- Like pictures
+- Edit pictures/captions
+- Delete a picture
 
-Build Instagram: Simple huh!
+Technologies used
+---
+- Ruby on Rails
+- RSpec
+- Capybara
+- Postgres
 
-Bonus if you can write your own set of sensible user stories!
+Installation (OSX)
+---
+- Clone repo
+- run ```bundle install```
+- brew install any missing packages
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+Setup
+---
+- Run the following rake commends to get setup:
+  - ```bin/rake db:create```
+  - ```bin/rake db:migrate```
+- Start the Rails server with the following command:
+  - ```bin/rails s```
+- Visit ```localhost:3000```
