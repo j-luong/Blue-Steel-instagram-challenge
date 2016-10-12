@@ -37,3 +37,7 @@ Setup
 - Start the Rails server with the following command:
   - ```bin/rails s```
 - Visit ```localhost:3000```
+
+Known issues
+---
+- Initial 'like' causes an error. Going back and re-liking works.
